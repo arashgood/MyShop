@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-MyShop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MyShopTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MyShopUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftGifOrigin.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>766CCBE071C3287AFE482579F9AB792A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90162CB26B6F0401ADB4546E38B5CC25</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9079B9A0F0452D631C9AD55D79C9E631</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F87D76D78BFCD091F09E11329C367CF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFE759932F75C7F87B4AE0A35AAC4FFB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
