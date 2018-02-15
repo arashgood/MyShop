@@ -802,7 +802,7 @@
                                                     <constraint firstAttribute="width" constant="22" id="PT4-Ji-3NR"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32528584" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckl-03-AUe" userLabel="name">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckl-03-AUe" userLabel="name">
                                                 <rect key="frame" x="20" y="5" width="317" height="31"/>
                                                 <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -906,7 +906,7 @@
                                                     <constraint firstAttribute="width" constant="31" id="s6X-RO-nxR"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="البرز - کرج - شهرک اوج " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="PCL-pO-8aU" userLabel="name">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تهران ح- میدان ارژانتین" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="PCL-pO-8aU" userLabel="name">
                                                 <rect key="frame" x="20" y="5" width="311" height="90"/>
                                                 <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="17"/>
                                                 <nil key="textColor"/>
