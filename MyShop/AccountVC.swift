@@ -36,6 +36,7 @@ class AccountVC: UIViewController,UITableViewDelegate,UITableViewDataSource,back
     @IBOutlet weak var basket_counter_number: UILabel!
     @IBOutlet weak var basket_counter_background: BasketCounterView!
     
+    // view funcs *******************************
     override func viewWillAppear(_ animated: Bool) {
 
         informationsView.isHidden = true
@@ -63,9 +64,6 @@ class AccountVC: UIViewController,UITableViewDelegate,UITableViewDataSource,back
 //        self.present(editUsrInf, animated: true, completion: nil)
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//
-//    }
     
     // actions ************************************************
     @IBAction func indexChanged(sender: UISegmentedControl)

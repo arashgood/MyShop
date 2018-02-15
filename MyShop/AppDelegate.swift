@@ -16,20 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let tabBarController: UITabBarController? = (window?.rootViewController as? UITabBarController)
-        let tabBar: UITabBar? = tabBarController?.tabBar
-        
-        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: iranSans14!], for: .normal)
-        //////////
-        tabBarController?.delegate = self as? UITabBarControllerDelegate
-        window?.addSubview((tabBarController?.view)!)
-        //////////
-        tabBar?.layer.shadowColor = SHADOW_COLOR.cgColor
-        tabBar?.layer.shadowOpacity = 1.0
-        tabBar?.layer.shadowRadius = 2.0
-        tabBar?.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        tabBar?.backgroundColor = UIColor.white
-        
+        changeTabBarAppearance()
         return true
     }
 
@@ -55,6 +42,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
+    //**
+    func changeTabBarAppearance() {
+        let tabBarController: UITabBarController? = (window?.rootViewController as? UITabBarController)
+        let tabBar: UITabBar? = tabBarController?.tabBar
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: iranSans14!], for: .normal)
+        //////////
+        tabBarController?.delegate = self as? UITabBarControllerDelegate
+        window?.addSubview((tabBarController?.view)!)
+        //////////
+        tabBar?.layer.shadowColor = SHADOW_COLOR.cgColor
+        tabBar?.layer.shadowOpacity = 1.0
+        tabBar?.layer.shadowRadius = 2.0
+        tabBar?.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        tabBar?.backgroundColor = UIColor.white
+    }
 
 }
 

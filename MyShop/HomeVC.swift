@@ -32,7 +32,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     
     //view funcs *******************************************************************
     override func viewWillAppear(_ animated: Bool) {
-        //fake reterive from fake webservice
+        //reterive fake data
         
         retreiveProducts()
         relaodCollections()
@@ -75,6 +75,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     @IBAction func go_to_basket_page(_ sender: UIButton) {
         tabBarController?.selectedIndex = 2
     }
+    
     @IBAction func go_to_search_page(_ sender: UIButton) {
         tabBarController?.selectedIndex = 1
     }

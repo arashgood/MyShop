@@ -10,25 +10,22 @@ import SDWebImage
 
 class ShowProductVC: UIViewController {
     
-    @IBOutlet var emptyHeart: UIImageView!
-    @IBOutlet var fullfieldHeart: UIImageView!
-    
-    @IBOutlet weak var basket_counter_number: UILabel!
-    @IBOutlet weak var basket_counter_background: BasketCounterView!
+
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productDescriptions: UITextView!
+    @IBOutlet weak var numberLabel: UILabel!
     
     var product: Product!
+    
    
     override func viewDidLoad() {
-        
-        //emptyHeart.isHidden = false
-        //fullfieldHeart.isHidden = true
+     
         productImage.sd_setImage(with: URL(string: product.imgStrUrl), placeholderImage: #imageLiteral(resourceName: "productTest"))
         productDescriptions.text = product.desc
+        numberLabel.text = String(product.number)
     }
     
-    //  actions ***********
+    //  actions **************************
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -41,20 +38,21 @@ class ShowProductVC: UIViewController {
         checkLikedProductsAdd()
     }
     
-    
-    //**
-    func fillTestData() {
-        let likedPrdcts = testLikedProducts
-        
-        for prdct in likedPrdcts {
-            if product.id == prdct.id {
-                emptyHeart.isHidden = true
-                fullfieldHeart.isHidden = false
-            }
-        }
+    @IBAction func addOneMore(_ sender: Any) {
+        handleAdder()
     }
     
-    //**
+    @IBAction func minusOne(_ sender: Any) {
+        
+        if product._number! > 1 {
+            self.product._number! -= 1
+            self.numberLabel.text = String(product._number!)
+        }
+        
+    }
+    
+    //funcs **************************
+
     func checkBasketAdd() {
         var existsInBasket = false
         for prdct in Basket.instance.products {
@@ -69,7 +67,6 @@ class ShowProductVC: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.dismiss(animated: true, completion: nil)
             }
-            //refreshCounters(number: <#T##UILabel?#>, background: <#T##UIView?#>)
             return
         }
         showRedToast(msg: "محصول در سبد خرید موجود است ", vc: self)
@@ -91,12 +88,36 @@ class ShowProductVC: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.dismiss(animated: true, completion: nil)
             }
-            //refreshCounters(number: <#T##UILabel?#>, background: <#T##UIView?#>)
             return
         }
         showRedToast(msg: "محصول در در علاقمندی های شما موجوداست ", vc: self)
     }
     
+    
+    //**
+    func findProductIndex() -> Int {
+        for (index,prdct) in testProducts.enumerated() {
+            if prdct.id == product.id {
+                return index
+            }
+        }
+        return 0
+    }
+    
+    //**
+    func handleAdder() {
+//        let index = findProductIndex()
+//        if index == 0 {
+//            return
+//        }
+        if product.availableNumber < (product._number! + 1)  {
+            showToast(msg: "موجود نیست!", vc: self)
+            return
+        }
+        
+        self.product._number! += 1
+        self.numberLabel.text = String(product._number!)
+    }
     
  // end of class
 }

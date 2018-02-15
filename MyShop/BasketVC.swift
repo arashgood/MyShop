@@ -111,6 +111,10 @@ class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource, avai
         NotificationCenter.default.post(name: .showSuccessAlert, object: nil)
     }
     
+    func showNotExitsAlert() {
+        showToast(msg: "موجود نیست!", vc: self)
+    }
+    
 
     
     //end of class

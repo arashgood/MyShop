@@ -12,6 +12,7 @@ import SDWebImage
 
 protocol availableNumberChangeDelegate: class {
     func reloadTable()
+    func showNotExitsAlert()
 }
 
 protocol SuccessDelagte: class {
@@ -60,16 +61,21 @@ class BasketCell: UITableViewCell {
     //**
     @IBAction func addOneMore(_ sender: Any) {
         
-        testBasket[index]._number! += 1
-        
+        if Basket.instance.products[index].availableNumber < (Basket.instance.products[index]._number! + 1)  {
+            self.changeDelagate.showNotExitsAlert()
+            return
+        }
+        Basket.instance.products[index]._number! += 1
         self.changeDelagate.reloadTable()
     }
     
     //**
     @IBAction func minusOne(_ sender: Any) {
         
-        testBasket[index]._number! -= 1
-        self.changeDelagate.reloadTable()
+        if Basket.instance.products[index]._number > 1 {
+            Basket.instance.products[index]._number! -= 1
+            self.changeDelagate.reloadTable()
+        }
     }
     
     //**
@@ -99,6 +105,11 @@ class BasketCell: UITableViewCell {
     }
     
  
+    //**
+    func findProductIndex(id: Int)-> Int {
+        //for i in test
+        return 0
+    }
     
 
     
