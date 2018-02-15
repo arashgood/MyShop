@@ -10,11 +10,14 @@ import Foundation
 
 class Product {
     
-    private var _imgStrUrl: String!
-    private var _title: String!
-    private var _price: Int!
-    private var _id: Int!
-    private var _number: Int!
+     var _imgStrUrl: String!
+     var _title: String!
+     var _desc: String!
+     var _price: Int!
+     var _id: Int!
+     var _number: Int!
+     var _availableNumber: Int!
+    
     
     var imgStrUrl: String {
         return _imgStrUrl
@@ -22,6 +25,10 @@ class Product {
     
     var title: String {
         return _title
+    }
+    
+    var desc: String {
+        return _desc
     }
     
     var price: Int {
@@ -36,13 +43,18 @@ class Product {
         return _number
     }
     
+    var availableNumber: Int {
+        return _availableNumber
+    }
     
-    init(url: String, title: String, price: Int,id: Int, number: Int) {
+    init(url: String, title: String, desc: String, price: Int,id: Int, number: Int, availableNumber: Int) {
         
         self._imgStrUrl = url
         self._title = title
         self._price = price
         self._id = id
+        self._desc = desc
         self._number = number
+        self._availableNumber = availableNumber
     }
 }

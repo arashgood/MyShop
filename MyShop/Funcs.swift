@@ -68,6 +68,38 @@ func downloadImage(url: String,_ callback: @escaping (UIImage) -> Void ) {
 }
 
 //**
+func showToast(msg: String, vc: UIViewController) {
+    
+        let toast = ToastView()
+        toast.setInfo(message: msg, vc: vc)
+}
+
+//**
+func showGreenToast(msg: String, vc: UIViewController) {
+    
+    let toast = ToastView()
+    toast.setInfo(message: msg, vc: vc)
+    toast.setColor(color: CUSTOM_GREEN)
+}
+
+//**
+func show‌BlueToast(msg: String, vc: UIViewController) {
+    
+    let toast = ToastView()
+    toast.setInfo(message: msg, vc: vc)
+    toast.setColor(color: CUSTOM_BLUE)
+}
+
+//**
+func showRedToast(msg: String, vc: UIViewController) {
+    
+    let toast = ToastView()
+    toast.setInfo(message: msg, vc: vc)
+    toast.setColor(color: CUSTOM_RED)
+}
+
+
+//**
 func showAllert(title: String,msg: String, vc: UIViewController) {
     let allert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
     let action = UIAlertAction(title: "تایید", style: .default, handler: nil)

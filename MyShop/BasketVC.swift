@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource, availableNumberChangeDelegate, SuccessDelagte {
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,11 +19,10 @@ class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshCounters(number: nil,background: nil)
-        
         tableView.delegate = self
         tableView.dataSource = self
         
+        refreshCounters(number: nil,background: nil)
         setGuide()
         setNotifications()
         
@@ -41,6 +40,7 @@ class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     @IBAction func buy_whole_of_basket(_ sender: UIButton) {
+        
     }
     
     // TableView funcs **********************************************
@@ -54,49 +54,36 @@ class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "basketCell", for: indexPath) as? BasketCell {
-            
-            let c = makeBasketCell(cell: cell, product: Basket.instance.products[indexPath.row], index: indexPath.row)
-            c.selectionStyle = .none
-            return c
-        } else {
-            return UITableViewCell()
-        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "basketCell", for: indexPath) as! BasketCell
+        let c = makeBasketCell(cell: cell, product: Basket.instance.products[indexPath.row], index: indexPath.row)
+        c.selectionStyle = .none
+        return c
     }
     
     
     // funcs **********************************************************
     func makeBasketCell(cell: BasketCell, product: Product, index: Int) -> UITableViewCell {
         
-        if let title = String(product.title) {
-            if let price = product.price as? Int{
-                if let imgStrUrl = String(product.imgStrUrl) {
-                    if let number = product.number as? Int {
-                        cell.configureCell(imgStrUrl: imgStrUrl, title: title, price: price, index: index, number: number)
-                        return cell
-                    } else {
-                        return UITableViewCell()
-                    }
-                    
-                } else {
-                    return UITableViewCell()
-                }
-            } else {
-                return UITableViewCell()
-            }
-        } else {
-            return UITableViewCell()
-        }
+        print(product.number)
+        let title = String(product.title)!
+        let price = product.price
+        let imgStrUrl = String(product.imgStrUrl)!
+        let number = product.number
+        cell.product = product
+        cell.configureCell(imgStrUrl: imgStrUrl, title: title, price: price, index: index, number: number)
+        cell.changeDelagate = self
+        cell.successDelegate = self
         
-     //end of makeCell
+        return cell
     }
     
-    func reloadTable(){
+    //**
+    func reloadTable() {
         self.tableView.reloadData()
         refreshCounters(number: nil, background: nil)
     }
     
+    //**
     func setGuide() {
         
         if Basket.instance.count > 0 {
@@ -111,12 +98,20 @@ class BasketVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    //**
     func setNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTable), name: .reloadTable, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.setGuide), name: .setGuide, object: nil)
     }
-
+    
+    //**
+    func goHomeShowAlert() {
+        self.tabBarController?.selectedIndex = 0
+        NotificationCenter.default.post(name: .showSuccessAlert, object: nil)
+    }
     
 
+    
+    //end of class
 }

@@ -22,7 +22,7 @@ class LikedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.reloadData()
+        
         self.tableView.tableFooterView = UIView()
         setGuide()
         setNotification()
@@ -30,6 +30,7 @@ class LikedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
         setGuide()
         refreshCounters(number: self.basket_counter_number, background: self.basket_counter_background)
         

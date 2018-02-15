@@ -35,10 +35,13 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         //fake reterive from fake webservice
         
         retreiveProducts()
+        relaodCollections()
         refreshCounters(number: self.basket_counter_number, background: self.basket_counter_background)
         //Basket.instance.refreshBC(number: self.basket_counter_number, background: self.basket_counter_background)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSuccesAlert), name: .showSuccessAlert, object: nil)
     }
     
+    //**
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,12 +98,22 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     
     //**
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        handleCell(collectionView: collectionView, indexPath: indexPath)
+        return makeCell(collectionView: collectionView, indexPath: indexPath)
     }
     
+    //**
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showProduct(index: indexPath.row)
+    }
 
     //**
-    func handleCell(collectionView: UICollectionView,indexPath: IndexPath) -> UICollectionViewCell {
+    func showProduct(index: Int) {
+        let sp = self.storyboard?.instantiateViewController(withIdentifier: "ShowProductVC") as! ShowProductVC
+        sp.product = topProducts[index]
+        self.present(sp, animated: true, completion: nil)
+    }
+    //**
+    func makeCell(collectionView: UICollectionView,indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.tag == 1 {
             
             //middle Collection View
@@ -181,22 +194,12 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     
     //**
     func makeMiddleCell(cell: MiddleCell,product: Product) -> UICollectionViewCell {
-        
-        if let strUrl = String(product.imgStrUrl) {
-            if let title = String(product.title) {
-                if let price = (product.price) as? Int {
-                    cell.configureCell(imageStrUrl: strUrl, title: title, price: price)
-                    return cell
-                } else {
-                    return UICollectionViewCell()
-                }
-            } else {
-                return UICollectionViewCell()
-            }
-        } else {
-            return UICollectionViewCell()
-        }
-        //end of makeMiddle cell
+    
+        let strUrl = String(product.imgStrUrl)!
+        let title = String(product.title)!
+        let price = (product.price)
+        cell.configureCell(imageStrUrl: strUrl, title: title, price: price,availalbleNumbers: product.availableNumber)
+        return cell
     }
     
     //**
@@ -224,6 +227,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         self.middleCollectionView.dataSource = self
         self.bottomCollectionView.delegate = self
         self.bottomCollectionView.dataSource = self
+        
     }
     
     //**
@@ -261,7 +265,21 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    //**
+    func relaodCollections() {
+        middleCollectionView.reloadData()
+        bottomCollectionView.reloadData()
+    }
 
+    //***
+    func showSuccesAlert() {
+        let alert = UIAlertController(title: nil, message: "خرید با موفقیت انجام شد", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "تایید", style: .cancel, handler: nil)
+        
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
 
   //end of class
 }

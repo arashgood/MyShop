@@ -10,12 +10,12 @@ import Foundation
 
 class Order {
     
-    private var _imgStrUrl: String!
-    private var _title: String!
-    private var _price: Int!
-    private var _id: Int!
-    private var _number: Int!
-    private var _state: Int!
+    /*private*/ var _imgStrUrl: String!
+    /*private*/ var _title: String!
+/*private*/ var _price: Int!
+    /*private*/ var _id: Int!
+    /*private*/ var _number: Int!
+   /*private*/ var _state: Int!
     
     var imgStrUrl: String {
         return _imgStrUrl
